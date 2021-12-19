@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  pubsub:
+    build:
+      context: ./pubsub
+      dockerfile: .
+    volumes:
+      - ./pubsub:/pubsub
+    env_file:
+      - ./pubsub/.env.dev
+    command: "python pubsub.py"
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+volumes:
+  rabbitmq-data:

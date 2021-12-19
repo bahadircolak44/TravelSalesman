@@ -44,7 +44,7 @@ class PubSub:
         data = json.loads(body.decode())
         print(f'Received Problem: {data}')
 
-        problem = dict(locations=data, num_vehicles=4, depot=0)
+        problem = dict(locations=data, num_vehicles=1, depot=0)
         solution = main(problem)
         self.publish(json.dumps(solution).encode())
 
