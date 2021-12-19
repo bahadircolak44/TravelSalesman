@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from api.views import CoordinatePairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/problem/', CoordinatePairView.as_view()),
 ]
