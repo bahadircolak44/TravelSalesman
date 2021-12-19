@@ -22,5 +22,19 @@ services:
       - 15672:15672
       - 5672:5672
 
+  rest_api:
+    build:
+      context: ./rest_api
+      dockerfile: .
+    volumes:
+      - ./rest_api:/rest_api
+    command: >
+      sh -c "python3 manage.py runserver 0.0.0.0:8080"
+    env_file:
+      - ./rest_api/.env.dev
+    ports:
+      - "8080:8080"
+    restart: on-failure
+
 volumes:
   rabbitmq-data:
