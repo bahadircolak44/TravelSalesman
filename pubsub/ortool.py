@@ -27,25 +27,42 @@ def print_solution(manager, routing, solution):
     plan_output_list = []
     route_distance = 0
     while not routing.IsEnd(index):
-        plan_output += ' {} ->'.format(manager.IndexToNode(index))
-        plan_output_list.append(index)
+        plan_output_list.append(manager.IndexToNode(index))
         previous_index = index
         index = solution.Value(routing.NextVar(index))
         route_distance += routing.GetArcCostForVehicle(previous_index, index, 0)
-    plan_output += ' {}\n'.format(manager.IndexToNode(index))
-    plan_output_list.append(index)
-    print(plan_output)
-    plan_output += 'Objective: {}\n'.format(route_distance)
+    plan_output_list.append(manager.IndexToNode(index))
     solution_dict = dict(route=plan_output_list, cost=route_distance)
     return solution_dict
 
 
-def main(data):
+def print_solution2(num_vehicles, manager, routing, solution):
+    """Prints solution on console."""
+    max_route_distance = 0
+    solution_dict = {}
+    for vehicle_id in range(num_vehicles):
+        index = routing.Start(vehicle_id)
+        plan_output = 'Route for vehicle {}:\n'.format(vehicle_id)
+        plan_output_list = []
+        route_distance = 0
+        while not routing.IsEnd(index):
+            plan_output_list.append(manager.IndexToNode(index))
+            previous_index = index
+            index = solution.Value(routing.NextVar(index))
+            route_distance += routing.GetArcCostForVehicle(
+                previous_index, index, vehicle_id)
+        plan_output_list.append(manager.IndexToNode(index))
+        solution_dict[vehicle_id] = dict(route=plan_output_list, cost=route_distance)
+        max_route_distance = max(route_distance, max_route_distance)
+    return solution_dict
+
+
+def main(locations, num_vehicles=1, depot=0, max_travel_distance=1000):
     """Entry point of the program."""
-    manager = pywrapcp.RoutingIndexManager(len(data['locations']),
-                                           data['num_vehicles'], data['depot'])
+    manager = pywrapcp.RoutingIndexManager(len(locations),
+                                           num_vehicles, depot)
     routing = pywrapcp.RoutingModel(manager)
-    distance_matrix = compute_euclidean_distance_matrix(data['locations'])
+    distance_matrix = compute_euclidean_distance_matrix(locations)
 
     def distance_callback(from_index, to_index):
         """Returns the distance between the two nodes."""
@@ -55,12 +72,29 @@ def main(data):
         return distance_matrix[from_node][to_node]
 
     transit_callback_index = routing.RegisterTransitCallback(distance_callback)
+
+    # Define cost of each arc.
     routing.SetArcCostEvaluatorOfAllVehicles(transit_callback_index)
+
+    # Add Distance constraint.
+    dimension_name = 'Distance'
+    routing.AddDimension(
+        transit_callback_index,
+        0,  # no slack
+        max_travel_distance,  # vehicle maximum travel distance
+        True,  # start cumul to zero
+        dimension_name)
+    distance_dimension = routing.GetDimensionOrDie(dimension_name)
+    distance_dimension.SetGlobalSpanCostCoefficient(100)
+
+    # Setting first solution heuristic.
     search_parameters = pywrapcp.DefaultRoutingSearchParameters()
     search_parameters.first_solution_strategy = (
         routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
 
+    # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
 
+    # Print solution on console.
     if solution:
-        return print_solution(manager, routing, solution)
+        return print_solution2(num_vehicles, manager, routing, solution)

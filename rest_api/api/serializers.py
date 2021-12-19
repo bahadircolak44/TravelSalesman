@@ -12,5 +12,8 @@ class NoModelSerializer(serializers.Serializer):
         pass
 
 
-class CoordinatePairSerializer(NoModelSerializer):
-    coordinates = serializers.ListSerializer(child=serializers.ListSerializer(child=serializers.FloatField()))
+class LocationSerializer(NoModelSerializer):
+    locations = serializers.ListSerializer(child=serializers.ListSerializer(child=serializers.FloatField()))
+    num_vehicles = serializers.IntegerField()
+    depot = serializers.IntegerField()
+    max_travel_distance = serializers.IntegerField()

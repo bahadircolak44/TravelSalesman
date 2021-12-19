@@ -1,6 +1,6 @@
 import json
 
-from api.serializers import CoordinatePairSerializer
+from api.serializers import LocationSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,9 +12,9 @@ class CoordinatePairView(APIView):
         return Response(status=status.HTTP_200_OK)
 
     def post(self, *args, **kwargs):
-        serializer = CoordinatePairSerializer(data=self.request.data)
+        serializer = LocationSerializer(data=self.request.data)
         if serializer.is_valid():
             # print(serializer.validated_data.get('coordinates'))
-            solution = PubSub().emit(json.dumps(serializer.validated_data.get('coordinates')))
+            solution = PubSub().emit(json.dumps(serializer.validated_data))
             return Response(solution, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

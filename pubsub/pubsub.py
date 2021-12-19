@@ -39,13 +39,9 @@ class PubSub:
         self.channel.start_consuming()
 
     def callback(self, ch, method, properties, body):
-        # Let's give some time for connection (Only for developing purposes)
-        time.sleep(0.5)
-        data = json.loads(body.decode())
-        print(f'Received Problem: {data}')
-
-        problem = dict(locations=data, num_vehicles=1, depot=0)
-        solution = main(problem)
+        problem = json.loads(body.decode())
+        print(f'Received Problem: {problem}')
+        solution = main(**problem)
         self.publish(json.dumps(solution).encode())
 
 
