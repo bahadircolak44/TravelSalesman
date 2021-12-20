@@ -7,7 +7,17 @@ Basically, docker will install and deploy everything, you don't need extra effor
 
 If you add new libraries into django, you should build Dockerfile again.
 
+Additionally, you can also run 
+    
+    sh example.sh
+
 ## How to Use
+### **1- Run .sh File**
+When you run example.sh, script will install and run the application, and you will see the result.
+    
+    sh example.sh
+    
+### **2- Run docker-compose**
 You can find TravelSalesman.postman_collection.json file in directory.
 - import the file into Postman
 - there is only one api with examples

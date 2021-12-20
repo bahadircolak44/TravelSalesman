@@ -5,10 +5,10 @@ import pika
 
 class PubSub:
     def __init__(self):
-        self.host = os.getenv('RABBITMQ_HOST')
-        self.port = os.getenv('RABBITMQ_PORT')
-        self.routing_key = os.getenv('RABBITMQ_ROUTING_KEY')
-        self.exchange_type = os.getenv('RABBITMQ_EXCHANGE_TYPE')
+        self.host = os.getenv('RABBITMQ_HOST', 'localhost')
+        self.port = os.getenv('RABBITMQ_PORT', '5672')
+        self.routing_key = os.getenv('RABBITMQ_ROUTING_KEY', 'travel.salesman')
+        self.exchange_type = os.getenv('RABBITMQ_EXCHANGE_TYPE', 'topic')
         self.consumer_exchange = os.getenv('CONSUMER_EXCHANGE', 'problems')
         self.producer_exchange = os.getenv('PRODUCER_EXCHANGE', 'solutions')
         self.receive_binding = True
@@ -54,6 +54,8 @@ class PubSub:
         # when solution received, loop need to
         while self.receive_binding:
             self.channel.connection.process_data_events(time_limit=int(os.getenv('TIME_LIMIT', 5)))
+
+        self.receive_binding = True
         return self.solution
 
     def callback(self, ch, method, properties, body):
