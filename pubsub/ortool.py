@@ -19,30 +19,11 @@ def compute_euclidean_distance_matrix(locations):
     return distances
 
 
-def print_solution(manager, routing, solution):
+def return_solution(num_vehicles, manager, routing, solution):
     """Prints solution on console."""
-    print('Objective: {}'.format(solution.ObjectiveValue()))
-    index = routing.Start(0)
-    plan_output = 'Route:\n'
-    plan_output_list = []
-    route_distance = 0
-    while not routing.IsEnd(index):
-        plan_output_list.append(manager.IndexToNode(index))
-        previous_index = index
-        index = solution.Value(routing.NextVar(index))
-        route_distance += routing.GetArcCostForVehicle(previous_index, index, 0)
-    plan_output_list.append(manager.IndexToNode(index))
-    solution_dict = dict(route=plan_output_list, cost=route_distance)
-    return solution_dict
-
-
-def print_solution2(num_vehicles, manager, routing, solution):
-    """Prints solution on console."""
-    max_route_distance = 0
     solution_dict = {}
     for vehicle_id in range(num_vehicles):
         index = routing.Start(vehicle_id)
-        plan_output = 'Route for vehicle {}:\n'.format(vehicle_id)
         plan_output_list = []
         route_distance = 0
         while not routing.IsEnd(index):
@@ -53,17 +34,20 @@ def print_solution2(num_vehicles, manager, routing, solution):
                 previous_index, index, vehicle_id)
         plan_output_list.append(manager.IndexToNode(index))
         solution_dict[vehicle_id] = dict(route=plan_output_list, cost=route_distance)
-        max_route_distance = max(route_distance, max_route_distance)
     return solution_dict
 
 
 def main(locations, num_vehicles=1, depot=0, max_travel_distance=1000):
     """Entry point of the program."""
+    # Create the routing index manager.
     manager = pywrapcp.RoutingIndexManager(len(locations),
                                            num_vehicles, depot)
+    # Create Routing Model.
     routing = pywrapcp.RoutingModel(manager)
+
     distance_matrix = compute_euclidean_distance_matrix(locations)
 
+    # Create and register a transit callback.
     def distance_callback(from_index, to_index):
         """Returns the distance between the two nodes."""
         # Convert from routing variable Index to distance matrix NodeIndex.
@@ -97,4 +81,5 @@ def main(locations, num_vehicles=1, depot=0, max_travel_distance=1000):
 
     # Print solution on console.
     if solution:
-        return print_solution2(num_vehicles, manager, routing, solution)
+        return return_solution(num_vehicles, manager, routing, solution)
+    return {}

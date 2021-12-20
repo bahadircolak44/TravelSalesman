@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 class NoModelSerializer(serializers.Serializer):
     """
+    Serializer without model.
     """
 
     def update(self, instance, validated_data):

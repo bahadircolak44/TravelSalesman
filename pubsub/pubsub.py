@@ -1,7 +1,5 @@
 import json
 import os
-import time
-
 import pika
 
 from ortool import main
@@ -40,7 +38,7 @@ class PubSub:
 
     def callback(self, ch, method, properties, body):
         problem = json.loads(body.decode())
-        print(f'Received Problem: {problem}')
+        # print(f'Received Problem: {problem}')
         solution = main(**problem)
         self.publish(json.dumps(solution).encode())
 
