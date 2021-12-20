@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "b25737c5-7fdc-4b30-be77-6ec09c586d77",
+		"name": "TravelSalesman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/v1/problem/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"max_travel_distance\": 3000,\r\n    \"num_vehicles\": 3,\r\n    \"depot\": 0,\r\n    \"locations\": [\r\n        [288, 149], [288, 129], [270, 133], [256, 141], [256, 157], [246, 157],\r\n        [236, 169], [228, 169], [228, 161], [220, 169], [212, 169], [204, 169],\r\n        [104, 161], [104, 169], [90, 165], [80, 157], [64, 157], [64, 165],\r\n        [56, 169], [56, 161], [56, 153], [56, 145], [56, 137], [56, 129],\r\n        [16, 97], [16, 109], [8, 109], [8, 97], [8, 89], [8, 81],\r\n        [8, 73], [8, 65], [8, 57], [16, 57], [8, 49], [8, 41],\r\n        [56, 81], [48, 83], [56, 89], [56, 97], [104, 97], [104, 105],\r\n        [104, 113], [104, 121], [104, 129], [104, 137], [104, 145]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/problem/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"problem",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/api/v1/problem/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"max_travel_distance\": 3000,\r\n    \"num_vehicles\": 3,\r\n    \"depot\": 0,\r\n    \"locations\": [\r\n        [288, 149], [288, 129], [270, 133], [256, 141], [256, 157], [246, 157],\r\n        [236, 169], [228, 169], [228, 161], [220, 169], [212, 169], [204, 169],\r\n        [104, 161], [104, 169], [90, 165], [80, 157], [64, 157], [64, 165],\r\n        [56, 169], [56, 161], [56, 153], [56, 145], [56, 137], [56, 129],\r\n        [16, 97], [16, 109], [8, 109], [8, 97], [8, 89], [8, 81],\r\n        [8, 73], [8, 65], [8, 57], [16, 57], [8, 49], [8, 41],\r\n        [56, 81], [48, 83], [56, 89], [56, 97], [104, 97], [104, 105],\r\n        [104, 113], [104, 121], [104, 129], [104, 137], [104, 145]\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/problem/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"problem",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 20 Dec 2021 06:14:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "223"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"0\": {\n        \"route\": [\n            0,\n            4,\n            6,\n            7,\n            9,\n            10,\n            11,\n            13,\n            14,\n            15,\n            16,\n            20,\n            21,\n            22,\n            23,\n            43,\n            44,\n            45,\n            46,\n            2,\n            1,\n            0\n        ],\n        \"cost\": 537\n    },\n    \"1\": {\n        \"route\": [\n            0,\n            3,\n            42,\n            39,\n            29,\n            30,\n            31,\n            32,\n            34,\n            35,\n            33,\n            36,\n            40,\n            0\n        ],\n        \"cost\": 630\n    },\n    \"2\": {\n        \"route\": [\n            0,\n            41,\n            38,\n            37,\n            24,\n            28,\n            27,\n            26,\n            25,\n            19,\n            18,\n            17,\n            12,\n            8,\n            5,\n            0\n        ],\n        \"cost\": 627\n    }\n}"
+				},
+				{
+					"name": "http://localhost:8080/api/v1/problem/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"max_travel_distance\": 3000,\r\n    \"num_vehicles\": 1,\r\n    \"depot\": 0,\r\n    \"locations\": [\r\n        [\r\n            162,\r\n            354\r\n        ],\r\n        [\r\n            218,\r\n            382\r\n        ],\r\n        [\r\n            218,\r\n            358\r\n        ],\r\n        [\r\n            201,\r\n            370\r\n        ],\r\n        [\r\n            214,\r\n            371\r\n        ],\r\n        [\r\n            224,\r\n            370\r\n        ],\r\n        [\r\n            210,\r\n            382\r\n        ],\r\n        [\r\n            104,\r\n            354\r\n        ],\r\n        [\r\n            126,\r\n            338\r\n        ],\r\n        [\r\n            119,\r\n            340\r\n        ],\r\n        [\r\n            129,\r\n            349\r\n        ],\r\n        [\r\n            126,\r\n            347\r\n        ],\r\n        [\r\n            125,\r\n            346\r\n        ],\r\n        [\r\n            116,\r\n            355\r\n        ],\r\n        [\r\n            126,\r\n            335\r\n        ],\r\n        [\r\n            125,\r\n            355\r\n        ],\r\n        [\r\n            119,\r\n            357\r\n        ],\r\n        [\r\n            115,\r\n            341\r\n        ],\r\n        [\r\n            153,\r\n            351\r\n        ],\r\n        [\r\n            175,\r\n            363\r\n        ],\r\n        [\r\n            180,\r\n            360\r\n        ],\r\n        [\r\n            159,\r\n            331\r\n        ],\r\n        [\r\n            188,\r\n            357\r\n        ],\r\n        [\r\n            152,\r\n            349\r\n        ],\r\n        [\r\n            215,\r\n            389\r\n        ],\r\n        [\r\n            212,\r\n            394\r\n        ],\r\n        [\r\n            188,\r\n            393\r\n        ],\r\n        [\r\n            207,\r\n            406\r\n        ],\r\n        [\r\n            184,\r\n            410\r\n        ],\r\n        [\r\n            207,\r\n            392\r\n        ]\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/problem/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"problem",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 20 Dec 2021 08:13:15 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"0\": {\n        \"route\": [\n            0,\n            18,\n            23,\n            10,\n            11,\n            12,\n            15,\n            16,\n            13,\n            7,\n            17,\n            9,\n            8,\n            14,\n            21,\n            20,\n            22,\n            3,\n            2,\n            5,\n            4,\n            6,\n            1,\n            24,\n            25,\n            29,\n            27,\n            28,\n            26,\n            19,\n            0\n        ],\n        \"cost\": 373\n    }\n}"
+				},
+				{
+					"name": "http://localhost:8080/api/v1/problem/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"max_travel_distance\": 3000,\r\n    \"num_vehicles\": 2,\r\n    \"depot\": 0,\r\n    \"locations\": [\r\n        [35, 35],\r\n        [41, 49],\r\n        [35, 17],\r\n        [55, 45],\r\n        [55, 20],\r\n        [15, 30],\r\n        [25, 30],\r\n        [20, 50],\r\n        [10, 43],\r\n        [55, 60],\r\n        [30, 60],\r\n        [20, 65],\r\n        [50, 35],\r\n        [30, 25],\r\n        [15, 10],\r\n        [30, 5],\r\n        [10, 20],\r\n        [5, 30],\r\n        [20, 40],\r\n        [15, 60],\r\n        [45, 65],\r\n        [45, 20],\r\n        [45, 10],\r\n        [55, 5],\r\n        [65, 35],\r\n        [65, 20],\r\n        [45, 30],\r\n        [35, 40],\r\n        [41, 37],\r\n        [64, 42],\r\n        [40, 60],\r\n        [31, 52],\r\n        [35, 69],\r\n        [53, 52],\r\n        [65, 55],\r\n        [63, 65],\r\n        [2, 60],\r\n        [20, 20],\r\n        [5, 5],\r\n        [60, 12],\r\n        [40, 25],\r\n        [42, 7],\r\n        [24, 12],\r\n        [23, 3],\r\n        [11, 14],\r\n        [6, 38],\r\n        [2, 48],\r\n        [8, 56],\r\n        [13, 52],\r\n        [6, 68],\r\n        [47, 47],\r\n        [49, 58],\r\n        [27, 43],\r\n        [37, 31],\r\n        [57, 29],\r\n        [63, 23],\r\n        [53, 12],\r\n        [32, 12],\r\n        [36, 26],\r\n        [21, 24],\r\n        [17, 34],\r\n        [12, 24],\r\n        [24, 58],\r\n        [27, 69],\r\n        [15, 77],\r\n        [62, 77],\r\n        [49, 73],\r\n        [67, 5],\r\n        [56, 39],\r\n        [37, 47],\r\n        [37, 56],\r\n        [57, 68],\r\n        [47, 16],\r\n        [44, 17],\r\n        [46, 13],\r\n        [49, 11],\r\n        [49, 42],\r\n        [53, 43],\r\n        [61, 52],\r\n        [57, 48],\r\n        [56, 37],\r\n        [55, 54],\r\n        [15, 47],\r\n        [14, 37],\r\n        [11, 31],\r\n        [16, 22],\r\n        [4, 18],\r\n        [28, 18],\r\n        [26, 52],\r\n        [26, 35],\r\n        [31, 67],\r\n        [15, 19],\r\n        [22, 22],\r\n        [18, 24],\r\n        [26, 27],\r\n        [25, 24],\r\n        [22, 27],\r\n        [25, 21],\r\n        [19, 21],\r\n        [20, 26],\r\n        [18, 18]\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/problem/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"problem",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 20 Dec 2021 08:17:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "386"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"0\": {\n        \"route\": [\n            0,\n            27,\n            50,\n            51,\n            9,\n            81,\n            33,\n            79,\n            3,\n            77,\n            76,\n            26,\n            21,\n            73,\n            72,\n            4,\n            54,\n            55,\n            25,\n            39,\n            67,\n            23,\n            56,\n            75,\n            74,\n            22,\n            41,\n            15,\n            42,\n            87,\n            97,\n            92,\n            37,\n            100,\n            91,\n            98,\n            59,\n            95,\n            94,\n            13,\n            0\n        ],\n        \"cost\": 235\n    },\n    \"1\": {\n        \"route\": [\n            0,\n            89,\n            18,\n            60,\n            83,\n            8,\n            82,\n            7,\n            48,\n            47,\n            19,\n            11,\n            62,\n            10,\n            88,\n            31,\n            69,\n            1,\n            20,\n            66,\n            65,\n            71,\n            35,\n            34,\n            78,\n            29,\n            24,\n            68,\n            80,\n            12,\n            28,\n            0\n        ],\n        \"cost\": 227\n    },\n    \"2\": {\n        \"route\": [\n            0,\n            52,\n            70,\n            30,\n            32,\n            90,\n            63,\n            64,\n            49,\n            36,\n            46,\n            45,\n            17,\n            84,\n            5,\n            6,\n            96,\n            99,\n            93,\n            85,\n            61,\n            16,\n            86,\n            38,\n            44,\n            14,\n            43,\n            57,\n            2,\n            40,\n            58,\n            53,\n            0\n        ],\n        \"cost\": 235\n    }\n}"
+				}
+			]
+		}
+	]
+}
