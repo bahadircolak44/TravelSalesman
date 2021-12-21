@@ -18,7 +18,10 @@ When you run example.sh, script will install and run the application, and you wi
     sh example.sh
     
 ### **2- Run docker-compose**
-You can find TravelSalesman.postman_collection.json file in directory.
+
+    docker-compose up
+
+After running docker-compose, import TravelSalesman.postman_collection.json file located in project directory.
 - import the file into Postman
 - there is only one api with examples
 - you can try those examples with different parameters.(i.e max_travel_distance or num_vehicles)
