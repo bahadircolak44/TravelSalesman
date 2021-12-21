@@ -46,3 +46,11 @@ and for pubsub application test
 - Optimization of TSP .
 - Unittest coverage can be enhanced. 
 - Authentication system can be implemented.
+
+## LOGGING
+The pubsub service has FileHandler, which means that you can find logs on pubsub/pubsub.log
+.The log level of it is INFO. There are several try except in pubsub in case of errors.
+There is also info log when pubsub service received problem, and solved solution.
+
+The rest_api service has StreamHandler, so that you can find logs on console.
+
